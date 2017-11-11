@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "jasmine-node --verbose specs"
+  },
+  "dependencies": {
+    "jasmine": "^2.8.0",
+    "jasmine-node": "1.14.5"
+  }
+}
