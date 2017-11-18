@@ -10,7 +10,7 @@ var number_map_to_word_over_26 = function(collection){
     }
   }
   for(var i =0;i<collection.length;i++){
-    result.push(getchar(collection[i]))
+    result.push(getchar(collection[i]));
   }
   return result;
 };
