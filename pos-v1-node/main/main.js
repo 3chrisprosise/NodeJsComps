@@ -88,8 +88,8 @@ module.exports  = function () {
                 '(元)\n' +
                 '**********************';
 
-            console.log(resultStrItems +resultStrDiscountItems +resultStrPrice);
+            console.log(resultStrItems +resultStrDiscountItems + resultStrPrice);
         };
-        return {printInventory: this.printInventory};
+        return { printInventory: this.printInventory };
 };
 
