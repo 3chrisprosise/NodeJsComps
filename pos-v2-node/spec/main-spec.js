@@ -1,7 +1,7 @@
 const main = require('../main/main');
 const datbase = require('../main/datbase');
 
-describe('任务卡112', function () {
+describe('112', function () {
     var allItems,
         inputs,
         promotions,
@@ -26,7 +26,7 @@ describe('任务卡112', function () {
     });
 
     it("formatInputs", function () {
-        let expectText = [
+        var expectText = [
             {barcode: 'ITEM000001', num: 5},
             {barcode: 'ITEM000003', num: 2},
             {barcode: 'ITEM000005', num: 3}
@@ -37,7 +37,7 @@ describe('任务卡112', function () {
     });
 
     it("createArr", function () {
-        let expectArr = [
+        var expectArr = [
             [
                 {name: '雪碧', unit: '瓶', price: 3, num: 5, sumPrice: 15},
                 {name: '荔枝', unit: '斤', price: 15, num: 2, sumPrice: 30},
@@ -49,18 +49,18 @@ describe('任务卡112', function () {
             ]
         ];
 
-        let arr = [];
+        var arr = [];
         arr = main.createArr(allItems, promotions, infoInput, result, free);
         expect(arr).toEqual(expectArr);
     });
 
     it("subtotal", function () {
-        let expectArr = [
+        var expectArr = [
                             {name: '雪碧', unit: '瓶', price: 3, num: 5, sumPrice: 12},
                             {name: '荔枝', unit: '斤', price: 15, num: 2, sumPrice: 30},
                             {name: '方便面', unit: '袋', price: 4.5, num: 3, sumPrice: 9}
                         ];
-        let re = main.subtotal(result, free);
+        var re = main.subtotal(result, free);
         expect(re).toEqual(expectArr);
     });
 
@@ -70,7 +70,7 @@ describe('任务卡112', function () {
 
         main.main(inputs);
 
-        let expectText =
+        var expectText =
             '***<没钱赚商店>购物清单***\n' +
             '名称：雪碧，数量：5瓶，单价：3.00(元)，小计：12.00(元)\n' +
             '名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)\n' +
@@ -83,6 +83,7 @@ describe('任务卡112', function () {
             '总计：51.00(元)\n' +
             '节省：7.50(元)\n' +
             '**********************';
+
 
         expect(console.log).toHaveBeenCalledWith(expectText);
     });

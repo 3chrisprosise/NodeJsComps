@@ -11,7 +11,7 @@ const database = require("../main/database");
 describe('taxi fee', function () {
     // write your tests here...
 
-    let sd = [],
+    var sd = [],
         st = [],
         sum = [],
         inputs = [];
@@ -19,19 +19,19 @@ describe('taxi fee', function () {
     inputs = database.loadAllItems();
 
     it("计算每单距离的价格：", function () {
-        let expectArr = [6, 8.4, 13.2];
-        sd = main.sumDistance(inputs);
+        var expectArr = [6, 8.4, 13.2];
+        sd = main.Price_Distance(inputs);
         expect(sd).toEqual(expectArr);
     });
 
     it("计算每单停车时间的价格：", function () {
-        let expectArr = [0, 1.25, 2.5];
-        st = main.sumTime(inputs);
+        var expectArr = [0, 1.25, 2.5];
+        st = main.TotalTime(inputs);
         expect(st).toEqual(expectArr);
     });
 
     it("计算总价格：", function () {
-        let expectArr = [6, 10, 16];
+        var expectArr = [6, 10, 16];
         sum = main.main(inputs);
         expect(sum).toEqual(expectArr);
     });

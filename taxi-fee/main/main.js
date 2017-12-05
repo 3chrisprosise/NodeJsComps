@@ -1,56 +1,52 @@
 const database = require("./database");
 
 // 计算距离总价格
-function sumDistance(inputs) {
-    let sd = [],
-        sum;
+function Price_Distance(inputs) {
+    var result = [],
+        total;
     inputs.forEach(function (obj) {
-        sum = 0;
+        total = 0;
         if(obj.distance <= 2){
-            sum = 6;
+            total = 6;
         }else if(obj.distance <= 8){
-            sum = 6 + (8 - obj.distance) * 0.8;
+            total = 6 + (8 - obj.distance) * 0.8;
         }else{
-            sum = 6 + 6 * 0.8 + (obj.distance - 8) * 1.2;
+            total = 6 + 6 * 0.8 + (obj.distance - 8) * 1.2;
         }
-        sd.push(parseFloat(sum.toFixed(2)));
+        result.push(parseFloat(total.toFixed(2)));
     });
-    return sd;
+    return result;
 }
 
-// 计算停车时间总价格
-function sumTime(inputs) {
-    let st = [];
+function TotalTime(inputs) {
+    var st = [];
     inputs.forEach(function (obj) {
         st.push(obj.time * 0.25);
     });
     return st;
 }
-
-// 计算两个价格的和
 function arrAdd(arr1, arr2) {
-    for(let i = 0; i < arr1.length; i++){
+    for(var i = 0; i < arr1.length; i++){
         arr1[i] += arr2[i];
     }
     arr1 = arr1.map(Math.round);
     return arr1;
 }
 
-// 主函数
 function main() {
-    let sd = [],
+    var result = [],
         st = [],
         sum = [],
         inputs = [];
     inputs = database.loadAllItems();
-    sd = sumDistance(inputs);
-    st = sumTime(inputs);
-    sum = arrAdd(sd, st);
+    result = Price_Distance(inputs);
+    st = TotalTime(inputs);
+    sum = arrAdd(result, st);
     return sum;
 }
 
 module.exports = {
-    "sumDistance": sumDistance,
-    "sumTime": sumTime,
+    "Price_Distance": Price_Distance,
+    "TotalTime": TotalTime,
     "main": main
 };
