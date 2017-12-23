@@ -7,7 +7,7 @@ class Class {
         return `Class ${ this.number }`
     }
     assignLeader(Student){
-        if(Student.klass && Student.klass === this){
+        if( Student.klass && Student.klass === this ){
             this.leader = Student
             Student.id = 2;
             if( this.teacher && Student )
@@ -17,7 +17,7 @@ class Class {
         }
     }
     appendMember(Student){
-        if(Student.klass.number !== this.number){
+        if( Student.klass.number !== this.number ){
             Student.klass = this
             this.students.push(Student)
             if( this.teacher && Student )
@@ -26,6 +26,7 @@ class Class {
     }
     registerAssignLeaderListener(Teacher){
         this.teacher = Teacher
+
     }
     registerJoinListener(Teacher){
         this.teacher = Teacher
